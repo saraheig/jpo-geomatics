@@ -1,37 +1,39 @@
 <%= form_with(model: player, local: true) do |form| %>
   <% if player.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(player.errors.count, "error") %> prohibited this player from being saved:</h2>
+      <h2><%= pluralize(player.errors.count, "erreur identifiée", "erreurs identifiées") %> :</h2>
 
       <ul>
-      <% player.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% player.errors.full_messages.values.each do |message| %>
+        <li><%= message[0] %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
+  <hr/><h3>Information sur le joueur</h3>
+
   <div class="field">
-    <%= form.label :pseudo %>
+    Pseudo du joueur* : <br/>
     <%= form.text_field :pseudo %>
   </div>
 
   <div class="field">
-    <%= form.label :email %>
+    E-mail du joueur* : <br/>
     <%= form.text_field :email %>
   </div>
 
   <div class="field">
-    <%= form.label :score_geo %>
+    Atelier géomatique :
     <%= form.number_field :score_geo %>
   </div>
 
   <div class="field">
-    <%= form.label :score_gci %>
+    Atelier génie civil :
     <%= form.number_field :score_gci %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Enregistrer" %>
   </div>
 <% end %>

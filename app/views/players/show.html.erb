@@ -1,24 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Pseudo:</strong>
+  <strong>Pseudo du joueur :</strong>
   <%= @player.pseudo %>
 </p>
 
 <p>
-  <strong>Email:</strong>
+  <strong>E-mail du joueur :</strong>
   <%= @player.email %>
 </p>
 
 <p>
-  <strong>Score geo:</strong>
+  <strong>Atelier géomatique :</strong>
   <%= @player.score_geo %>
 </p>
 
 <p>
-  <strong>Score gci:</strong>
+  <strong>Atelier génie civil :</strong>
   <%= @player.score_gci %>
 </p>
 
-<%= link_to 'Edit', edit_player_path(@player) %> |
-<%= link_to 'Back', players_path %>
+<%= link_to 'Modifier', edit_player_path(@player) %> |
+<%= link_to 'Annuler', players_path %>
