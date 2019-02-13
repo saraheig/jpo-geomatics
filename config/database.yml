@@ -80,6 +80,8 @@ test:
 #
 production:
   <<: *default
-  database: jpo_production
-  username: jpo
-  password: <%= ENV['JPO_DATABASE_PASSWORD'] %>
+  database: <%= ENV['ECG_JPO_DATABASE_NAME'] %>
+  username: <%= ENV['ECG_JPO_DATABASE_USERNAME'] %>
+  password: <%= ENV['ECG_JPO_DATABASE_PASSWORD'] %>
+  host: <%= ENV['ECG_JPO_DATABASE_HOST'] %>
+  port: <%= ENV['ECG_JPO_DATABASE_PORT'] %>
