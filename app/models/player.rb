@@ -19,4 +19,14 @@ class Player < ApplicationRecord
     self.pseudo = self.pseudo.strip
     self.email = self.email.strip
   end
+
+  # Function search to search a keyword through a form
+  def self.search(keyword)
+    if keyword
+      where("pseudo iLIKE :term OR email iLIKE :term", term: "%#{keyword}%").order(updated_at: :desc)
+      # iLIKE -> case insensitive
+    else
+      all.order(updated_at: :desc)
+    end
+  end
 end
