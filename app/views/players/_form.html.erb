@@ -4,7 +4,7 @@
       <h2><%= pluralize(player.errors.count, "erreur identifiée", "erreurs identifiées") %> :</h2>
 
       <ul>
-      <% player.errors.full_messages.values.each do |message| %>
+      <% player.errors.messages.values.each do |message| %>
         <li><%= message[0] %></li>
       <% end %>
       </ul>
