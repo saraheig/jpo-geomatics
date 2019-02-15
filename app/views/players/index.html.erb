@@ -26,17 +26,9 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody id="players">
     <% @players.each do |player| %>
-      <tr>
-        <td><%= player.pseudo %></td>
-        <td><%= player.email %></td>
-        <td><%= player.score_geo %></td>
-        <td><%= player.score_gci %></td>
-        <td><%= link_to 'Voir', player %></td>
-        <td><%= link_to 'Modifier', edit_player_path(player) %></td>
-        <td><%= link_to 'Supprimer', player, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de ce joueur est irréversible.' } %></td>
-      </tr>
+      <%= render partial: 'player', locals: { player: player } %>
     <% end %>
   </tbody>
 </table>
