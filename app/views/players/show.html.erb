@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pseudo du joueur :</strong>
+  <%= @player.pseudo %>
+</p>
+
+<p>
+  <strong>E-mail du joueur :</strong>
+  <%= @player.email %>
+</p>
+
+<p>
+  <strong>Atelier géomatique :</strong>
+  <%= @player.score_geo %>
+</p>
+
+<p>
+  <strong>Atelier génie civil :</strong>
+  <%= @player.score_gci %>
+</p>
+
+<%= link_to 'Modifier', edit_player_path(@player) %> |
+<%= link_to 'Retour au classement', players_path %>
