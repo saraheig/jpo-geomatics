@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_16_145718) do
+ActiveRecord::Schema.define(version: 2019_02_16_154942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_02_16_145718) do
 
   create_table "users", force: :cascade do |t|
     t.string "pseudo", limit: 25
-    t.string "password_digest", limit: 50
+    t.text "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["pseudo"], name: "index_users_on_pseudo", unique: true
