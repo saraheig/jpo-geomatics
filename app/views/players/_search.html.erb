@@ -1,0 +1,11 @@
+<h3>Effectuer une recherche</h3>
+<%= form_tag(players_path, method: :get) do %>
+  <div class="field">
+    Mot-clé cherché dans le pseudo et l'e-mail des joueurs :
+    <%= text_field_tag :keyword, params[:keyword], size: '30', placeholder: 'Aucun mot-clé' %>
+  </div>
+  <div class="actions">
+    <%= submit_tag 'Rechercher', name: nil %>
+  </div>
+<% end %><br/>
+<%= link_to 'Annuler la recherche', players_path %><br/><br/>
