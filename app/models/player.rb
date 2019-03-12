@@ -14,19 +14,35 @@ class Player < ApplicationRecord
   validates_numericality_of :score_gci, :allow_nil => true, :less_than_or_equal_to => 32767, :message => 'Le score génie civil du joueur doit valoir maximum 32767.'
   validates_numericality_of :score_gci, :allow_nil => true, :greater_than_or_equal_to => 0, :message => 'Le score génie civil du joueur doit valoir minimum 0.'
 
+  # Override a method used by as_json()
+  def serializable_hash(options = nil)
+    result = super(options)
+    result['score_total'] = score_total
+    return result
+  end
+
   # Fuction to remove spaces in the fields
   def strip_blanks
     self.pseudo = self.pseudo.strip
     self.email = self.email.strip
   end
 
+  # Function to calculate the total score
+  def score_total
+    if score_geo && score_gci
+      score_geo + score_gci
+    end
+  end
+
   # Function search to search a keyword through a form
-  def self.search(keyword)
+  def self.search(keyword, sort)
     if keyword
-      where("pseudo iLIKE :term OR email iLIKE :term", term: "%#{keyword}%").order(updated_at: :desc)
+      where("pseudo iLIKE :term OR email iLIKE :term", term: "%#{keyword}%").order({ sort => :asc })
       # iLIKE -> case insensitive
+    elsif sort == :score_total
+      where("score_gci IS NOT NULL AND score_geo IS NOT NULL").order("score_gci + score_geo DESC")
     else
-      all.order(updated_at: :desc)
+      all.order({ sort => :asc })
     end
   end
 end

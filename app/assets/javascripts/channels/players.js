@@ -11,8 +11,62 @@ App.players = App.cable.subscriptions.create("PlayersChannel", {
 
   received: function(data) {
     // Called when there's incoming data on the websocket for this channel
-    console.log('received: ');
-    console.log(data);
-    $('#players').prepend(data.player);
+    console.log('received data');
+    var logged = $('body').data('logged');
+    if (logged) {
+      var pseudo = data.pseudo;
+      var id = data.id;
+      var line;
+
+      removePlayerLine(id);
+
+      $('#players tr').each(function(){
+        var currentLine = $(this);
+        var currentPseudo = currentLine.find('td.pseudo').text();
+        if (currentPseudo.localeCompare(pseudo) >= 0) {
+          line = currentLine;
+          return false;
+        }
+      });
+      if (!line) {
+        $('#players').append(data.player);
+      } else {
+        line.before(data.player);
+      }
+    }
+    else if (data.scoreGeo !== null && data.scoreGci !== null) {
+      var scoreTotal = data.scoreGeo + data.scoreGci;
+      var pseudo = data.pseudo;
+      var id = data.id;
+      var line;
+
+      removePlayerLine(id);
+
+      $('#players tr').each(function(){
+        var currentLine = $(this);
+        var currentScoreTotal = currentLine.find('td.score-total').text();
+        if (currentScoreTotal < scoreTotal) {
+          line = currentLine;
+          return false;
+        }
+      });
+      if (!line) {
+        $('#players').append(data.player);
+      } else {
+        line.before(data.player);
+      }
+    }
   }
 });
+
+// Check if the id already exists and, if it is the case, remove the line
+function removePlayerLine(id) {
+  $('#players tr').each(function(){
+   var currentLine = $(this);
+   var currentId = currentLine.data('id');
+   if (currentId == id) {
+     currentLine.remove();
+     return false;
+   }
+  });
+}

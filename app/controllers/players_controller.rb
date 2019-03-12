@@ -5,7 +5,11 @@ class PlayersController < AuthenticateController
   # GET /players
   def index
     keyword = params[:keyword]
-    @players = Player.search(keyword)
+    if current_user
+      @players = Player.search(keyword, :pseudo)
+    else
+      @players = Player.search(keyword, :score_total)
+    end
   end
 
   # GET /players/1
@@ -41,6 +45,9 @@ class PlayersController < AuthenticateController
   def update
     respond_to do |format|
       if @player.update(player_params)
+        # Connexion to the players channel
+        PlayersChannel.broadcast(@player)
+
         format.html { redirect_to @player, notice: 'Le joueur a été mis à jour.' }
       else
         format.html { render :edit }
@@ -51,6 +58,8 @@ class PlayersController < AuthenticateController
   # DELETE /players/1
   def destroy
     @player.destroy
+    # Connexion to the players channel
+    PlayersChannel.broadcast(@player)
     respond_to do |format|
       format.html { redirect_to players_url, notice: 'Le joueur a été supprimé.' }
     end
