@@ -3,12 +3,11 @@
   <% if logged_in %>
     <td><%= player['email'] %></td>
   <% end %>
-    <td align="center"><%= player['score_geo'] %></td>
     <td align="center"><%= player['score_gci'] %></td>
+    <td align="center"><%= player['score_geo'] %></td>
     <td class="score-total" align="center"><%= player['score_total'] %></td>
   <% if logged_in %>
     <td><%= link_to 'Voir', player_path(player['id']) %></td>
     <td><%= link_to 'Modifier', edit_player_path(player['id']) %></td>
-    <td><%= link_to 'Supprimer', player_path(player['id']), method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de ce joueur est irréversible.' } %></td>
   <% end %>
 </tr>
