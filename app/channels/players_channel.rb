@@ -6,6 +6,7 @@ class PlayersChannel < ApplicationCable::Channel
       {
         scoreGeo: player.score_geo,
         scoreGci: player.score_gci,
+        scoreGen: player.score_gen,
         pseudo: player.pseudo,
         id: player.id,
         player: player

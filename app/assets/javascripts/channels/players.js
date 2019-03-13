@@ -34,8 +34,8 @@ App.players = App.cable.subscriptions.create("PlayersChannel", {
         line.before(data.player);
       }
     }
-    else if (data.scoreGeo !== null && data.scoreGci !== null) {
-      var scoreTotal = data.scoreGeo + data.scoreGci;
+    else if (data.scoreGeo !== null && data.scoreGci !== null && data.scoreGen !== null) {
+      var scoreTotal = data.scoreGeo + data.scoreGci + data.scoreGen;
       var pseudo = data.pseudo;
       var id = data.id;
       var line;

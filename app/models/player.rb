@@ -12,6 +12,9 @@ class Player < ApplicationRecord
   validates_numericality_of :score_geo, :allow_nil => true, :less_than_or_equal_to => 100, :message => 'Le score géomatique du joueur doit valoir maximum 100.'
   validates_numericality_of :score_geo, :allow_nil => true, :greater_than_or_equal_to => 0, :message => 'Le score géomatique du joueur doit valoir minimum 0.'
 
+  validates_numericality_of :score_gen, :allow_nil => true, :less_than_or_equal_to => 100, :message => 'Le score environnement du joueur doit valoir maximum 100.'
+  validates_numericality_of :score_gen, :allow_nil => true, :greater_than_or_equal_to => 0, :message => 'Le score environnement du joueur doit valoir minimum 0.'
+
   validates_numericality_of :score_gci, :allow_nil => true, :less_than_or_equal_to => 100, :message => 'Le score génie civil du joueur doit valoir maximum 100.'
   validates_numericality_of :score_gci, :allow_nil => true, :greater_than_or_equal_to => 0, :message => 'Le score génie civil du joueur doit valoir minimum 0.'
 
@@ -30,8 +33,8 @@ class Player < ApplicationRecord
 
   # Function to calculate the total score
   def score_total
-    if score_geo && score_gci
-      score_geo + score_gci
+    if score_geo && score_gci && score_gen
+      score_geo + score_gci + score_gen
     end
   end
 
@@ -41,7 +44,7 @@ class Player < ApplicationRecord
       where("pseudo iLIKE :term OR email iLIKE :term", term: "%#{keyword}%").order({ sort => :asc })
       # iLIKE -> case insensitive
     elsif sort == :score_total
-      where("score_gci IS NOT NULL AND score_geo IS NOT NULL").order("score_gci + score_geo DESC")
+      where("score_gci IS NOT NULL AND score_geo IS NOT NULL AND score_gen IS NOT NULL").order("score_gci + score_geo + score_gen DESC")
     else
       all.order({ sort => :asc })
     end

@@ -73,6 +73,6 @@ class PlayersController < AuthenticateController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-      params.require(:player).permit(:pseudo, :email, :score_geo, :score_gci)
+      params.require(:player).permit(:pseudo, :email, :score_geo, :score_gci, :score_gen)
     end
 end
