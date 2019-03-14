@@ -10,8 +10,12 @@
   </head>
 
   <body data-logged='<%= @current_user ? true : false %>'>
-    <%= yield %>
-    <hr/><br/>
-    <%= render 'layouts/header' %>
+    <section class="section">
+      <div class="container">
+        <%= yield %>
+        <hr/>
+        <%= render 'layouts/header' %>
+      </div>
+    </section>
   </body>
 </html>

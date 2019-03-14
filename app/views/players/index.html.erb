@@ -1,26 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Classement</h1>
- <a href="https://heig-vd.ch/ecg" target="_blank">HEIG-VD EC+G</a><hr/>
+<h1 class="title">Classement</h1>
+ <a href="https://heig-vd.ch/ecg" target="_blank">Site HEIG-VD EC+G</a><hr/>
 
 <% if logged_in? %>
   <%= render partial: 'search', locals: { keyword: @keyword } %>
-  <hr/><br/>
+  <hr/>
   <%= link_to 'Ajouter un nouveau joueur', new_player_path %>
-  <br/><br/><hr/><br/>
+  <hr/>
 <% end %>
 
-<table cellspacing="10">
+<table class="table is-fullwidth is-striped">
   <thead>
     <tr>
       <th>Pseudo</th>
       <% if logged_in? %>
         <th>E-mail</th>
       <% end %>
-        <th>Défi Construction & Infrastructures</th>
-        <th>Défi Génie de l'Environnement</th>
-        <th>Défi Géomatique et Gestion du territoire</th>
-        <th>Score total</th>
+        <th class="is-hidden-mobile has-text-centered">Défi Construction & Infrastructures</th>
+        <th class="is-hidden-mobile has-text-centered">Défi Génie de l'Environnement</th>
+        <th class="is-hidden-mobile has-text-centered">Défi Géomatique et Gestion du territoire</th>
+        <th class="has-text-centered">Score total</th>
       <% if logged_in? %>
         <th colspan="2"></th>
       <% end %>

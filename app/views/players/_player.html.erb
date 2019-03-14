@@ -3,10 +3,10 @@
   <% if logged_in %>
     <td><%= player['email'] %></td>
   <% end %>
-    <td align="center"><%= player['score_gci'] %></td>
-    <td align="center"><%= player['score_gen'] %></td>
-    <td align="center"><%= player['score_geo'] %></td>
-    <td class="score-total" align="center"><%= player['score_total'] %></td>
+    <td class="is-hidden-mobile has-text-centered"><%= player['score_gci'] %></td>
+    <td class="is-hidden-mobile has-text-centered"><%= player['score_gen'] %></td>
+    <td class="is-hidden-mobile has-text-centered"><%= player['score_geo'] %></td>
+    <td class="score-total has-text-centered"><%= player['score_total'] %></td>
   <% if logged_in %>
     <td><%= link_to 'Voir', player_path(player['id']) %></td>
     <td><%= link_to 'Modifier', edit_player_path(player['id']) %></td>
