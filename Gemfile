@@ -28,6 +28,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Use jquery
 gem 'jquery-rails', '~> 4.3'
 
+# Use bulma-rails, a modern CSS framework based on Flexbox
+gem 'bulma-rails', '~> 0.7.4'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
