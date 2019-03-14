@@ -2,16 +2,13 @@
   <% if player.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(player.errors.count, "erreur identifiée", "erreurs identifiées") %> :</h2>
-
-      <ul>
       <% player.errors.messages.values.each do |message| %>
-        <li><%= message[0] %></li>
+        <%= message[0] %><br/>
       <% end %>
-      </ul>
     </div>
   <% end %>
 
-  <hr/><h3>Information sur le joueur</h3>
+  <hr/><h3 class="title is-5">Information sur le joueur</h3>
 
   <div class="field">
     Pseudo du joueur* : <br/>
@@ -38,6 +35,8 @@
     <%= form.number_field :score_geo %>
   </div>
 
+  <hr/>
+  <h6>* Champs obligatoires</h6><br/>
   <div class="actions">
     <%= form.submit "Enregistrer" %>
   </div>

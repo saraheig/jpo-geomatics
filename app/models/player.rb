@@ -5,9 +5,8 @@ class Player < ApplicationRecord
   validates_uniqueness_of :pseudo, :case_sensitive => false, :message => 'Le pseudo du joueur est déjà utilisé.'
   validates_length_of :pseudo, :maximum => 25, :message => 'Le pseudo du joueur doit avoir maximum 25 caractères.'
 
-  validates_presence_of :email, :message => 'L\'e-mail du joueur doit être spécifié.'
   validates_length_of :email, :maximum => 50, :message => 'L\'e-mail du joueur doit avoir maximum 50 caractères.'
-  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :message => 'Le format de l\'e-mail est incorrect.'
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :message => 'L\'e-mail du joueur doit être spécifié et son format doit être correct.'
 
   validates_numericality_of :score_geo, :allow_nil => true, :less_than_or_equal_to => 100, :message => 'Le score géomatique du joueur doit valoir maximum 100.'
   validates_numericality_of :score_geo, :allow_nil => true, :greater_than_or_equal_to => 0, :message => 'Le score géomatique du joueur doit valoir minimum 0.'

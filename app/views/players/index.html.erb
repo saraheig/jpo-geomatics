@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p><br/>
 
 <h1 class="title">Classement</h1>
  <a href="https://heig-vd.ch/ecg" target="_blank">Site HEIG-VD EC+G</a><hr/>
@@ -22,7 +22,7 @@
         <th class="is-hidden-mobile has-text-centered">Défi Géomatique et Gestion du territoire</th>
         <th class="has-text-centered">Score total</th>
       <% if logged_in? %>
-        <th colspan="2"></th>
+        <th></th>
       <% end %>
     </tr>
   </thead>
@@ -33,3 +33,10 @@
     <% end %>
   </tbody>
 </table>
+
+<hr/>
+<% if logged_in? %>
+  <%= link_to 'Se déconnecter', session_path, method: :delete %>
+<% else %>
+  <%= link_to 'Se connecter', new_session_path %>
+<% end %>

@@ -1,29 +1,31 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p><br/>
+
+<h1 class="title">Vérification des informations du joueur</h1><hr>
 
 <p>
   <strong>Pseudo du joueur :</strong>
   <%= @player.pseudo %>
-</p>
+</p><br/>
 
 <p>
   <strong>E-mail du joueur :</strong>
   <%= @player.email %>
-</p>
+</p><br/>
 
 <p>
   <strong>Défi Construction & Infrastructures :</strong>
   <%= @player.score_gci %>
-</p>
+</p><br/>
 
 <p>
   <strong>Défi Génie de l'Environnement :</strong>
   <%= @player.score_gen %>
-</p>
+</p><br/>
 
 <p>
   <strong>Défi Géomatique et Gestion du territoire :</strong>
   <%= @player.score_geo %>
-</p>
+</p><br/><hr/>
 
-<%= link_to 'Modifier', edit_player_path(@player) %> |
-<%= link_to 'Retour au classement', players_path %>
+<%= link_to 'Modifier les informations', edit_player_path(@player) %> |
+<%= link_to 'Retourner au classement', players_path %>
