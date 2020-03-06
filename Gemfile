@@ -5,6 +5,8 @@ ruby '2.4.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
+# Rails internals (application bootup, plugins, generators, rake tasks)
+gem 'railties', '~> 5.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -40,6 +42,8 @@ gem 'bulma-rails', '~> 0.7.4'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# Ruby client library for Travis CI
+gem 'travis', '~> 1.8', '>= 1.8.11'
 # Ruby implementation of the Coveralls API
 gem 'coveralls', '~> 0.8.23', require: false
 
@@ -52,6 +56,8 @@ group :development, :test do
   gem 'rubocop-rspec', '~> 1.37'
   # Collection of RuboCop cops to check performance optimizations in Ruby code
   gem 'rubocop-performance', '~> 1.5', '>= 1.5.1'
+  # BDD for Ruby
+  gem 'rspec', '~> 3.9'
 end
 
 group :development do
@@ -69,6 +75,8 @@ group :test do
   # WebDrive to write automated tests of websites
   gem 'selenium-webdriver', '~> 3.142', '>= 3.142.7'
   gem 'webdrivers', '~> 4.0'
+  # Make-like program implemented in Ruby (Travis CI)
+  gem 'rake', '~> 13.0', '>= 13.0.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

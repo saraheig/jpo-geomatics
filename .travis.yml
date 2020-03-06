@@ -1,0 +1,21 @@
+branches:
+  only: master
+
+language: ruby
+
+addons:
+  chrome: stable
+
+services:
+  - postgresql
+
+before_script:
+  - bundle install
+  - nvm install 8
+  - NODE_ENV=test bundle exec rake assets:precompile
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
+
+script:
+  - bundle exec rake test
+  - bundle exec rake test:system
