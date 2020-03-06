@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  pseudo: MyString
+  pseudo: MyString1
   password_digest: <%= BCrypt::Password.create('secret') %>
 
 two:
-  pseudo: MyString
+  pseudo: MyString2
   password_digest: <%= BCrypt::Password.create('secret') %>

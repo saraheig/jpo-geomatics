@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  pseudo: MyString
-  email: MyString
-  score_geo: 1
+  pseudo: MyString1
+  email: MyString1@gmail.com
   score_gci: 1
+  score_gen: 1
+  # The player 'one' has not completed the geo stand yet.
 
 two:
-  pseudo: MyString
-  email: MyString
-  score_geo: 1
-  score_gci: 1
+  pseudo: MyString2
+  email: MyString2@gmail.com
+  score_gci: 2
+  score_gen: 2
+  score_geo: 2
